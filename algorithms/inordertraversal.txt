@@ -1,0 +1,29 @@
+List<Integer> l = new ArrayList<>();
+
+public void recur(Tree root){
+	//recursive way to perform in-order traversal
+
+	if(root==null) return; //checks if root is null
+
+       	recur(root.left); //operate on left node
+        l.add(root.val); //do something with current node
+        recur(root.right); //operate on right node
+}
+
+
+public void iterate(Tree root){
+
+	Stack<Tree> s = new Stack<>();
+	Tree t = root;
+
+        while(t!=null||!s.isEmpty()){
+            while(t!=null){
+                s.push(t); //push current node into stack
+                t = t.left; //push left node into stack
+            }
+
+            t = s.pop(); //get leftmost node
+            l.add(t.val); //do something with that node
+            t = t.right; //if t.right is null, loop again and it'll take the node above it. If not, then it'll operate on the right note
+        }
+}
