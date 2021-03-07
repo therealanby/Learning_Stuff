@@ -1,0 +1,31 @@
+Recursion format
+
+//Return biggest number in tree example
+Tree {
+	Tree right;
+	Tree left;
+	int val;
+}
+
+public int searchTree(Tree t){
+	if(t==null) return 0; //base case
+	//base case is when to exit method. In this case, the method will exit once t is null. There can be multiple
+	
+	int i = 0; 
+	i = t.val; //initalization of values
+
+	int one = searchTree(t.right); 
+	int two = searchTree(t.left); 
+	//recursion statements. The amount of statements is equal to the amount of nodes you want to explore that is connected to the current node
+	//the return value of the method will determine what to do with each statement
+	
+	if(one>i) i = one;
+	if(two>i) i = two; 
+	//do something with the given values. Each subproblem will return the greater values of itself, right or left node. This will continue until the final parent node which will finally return the biggest value in the tree
+	
+	return i; 
+	//final exit statement. This statement must make sense for all sub problems and the final overall problem
+
+}
+	
+	
